@@ -1,0 +1,42 @@
+﻿@model SmartWizard.Models.EmpleadoPersonalViewModel
+@{
+    ViewBag.Title = "Personal Info";
+}
+<h2>Personal info</h2>
+@using (Html.BeginForm("PersonalInfo", "Empleados", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+<div class="form-horizontal">
+    <h4>PASO 1: Infomación personal del empleado</h4>
+    <hr />
+    @Html.ValidationSummary(true)
+    <div class="form-group">
+        @Html.LabelFor(model => model.Nombres, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Nombres)
+            @Html.ValidationMessageFor(model => model.Nombres)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Apellidos, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Apellidos)
+            @Html.ValidationMessageFor(model => model.Apellidos)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Domicilio, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Domicilio)
+            @Html.ValidationMessageFor(model => model.Domicilio)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" name="BtnPrevious" value="Previous" class="btn btn-default" />
+            <input type="submit" name="BtnNext" value="Next" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+} 

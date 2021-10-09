@@ -1,0 +1,44 @@
+﻿@model SmartWizard.Models.EmpleadoLaboralViewModel
+@{
+    ViewBag.Title = "Laboral Info";
+}
+<h2>Laboral Info</h2>
+@using (Html.BeginForm("LaboralInfo", "Empleados", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+<div class="form-horizontal">
+    <h4>PASO 2: Información laboral del empleado</h4>
+    <hr />
+    @Html.ValidationSummary(true)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Departamento, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Departamento)
+            @Html.ValidationMessageFor(model => model.Departamento)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.FechaIngreso, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.FechaIngreso, "{0:yyyy-MM-dd}", new { type = "date" })
+            @Html.ValidationMessageFor(model => model.FechaIngreso)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Salario, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Salario)
+            @Html.ValidationMessageFor(model => model.Salario)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" name="BtnPrevious" value="Previous" class="btn btn-default" />
+            <input type="submit" name="BtnNext" value="Finish" class="btn btn-default" />
+            <input type="submit" name="BtnCancel" value="Cancel" class="btn btn-danger" />
+        </div>
+    </div>
+</div>
+} 
